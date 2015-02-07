@@ -1,0 +1,16 @@
+{
+  "name": "aegis",
+  "version": "0.0.1",
+  "description": "CSV Downloader",
+  "main": "csv_down.js",
+  "author": "ponkotuy",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-contrib-coffee": "*"
+  },
+  "scripts": {
+    "test": "test"
+  }
+}

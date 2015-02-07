@@ -1,13 +1,11 @@
 
 # Required Array
 @jsonToArray = (json) ->
-  if json.isArray()
-    columns = []
-    result = json.map = (line) ->
-      toArray(columns, line)
-    result.unshift(columns)
-    result
-  else []
+  columns = []
+  result = json.map = (line) ->
+    toArray(columns, line)
+  result.unshift(columns)
+  result
 
 toArray = (columns, x) ->
   result = []

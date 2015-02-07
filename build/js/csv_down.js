@@ -24,16 +24,12 @@
 
   this.jsonToArray = function(json) {
     var columns, result;
-    if (json.isArray()) {
-      columns = [];
-      result = json.map = function(line) {
-        return toArray(columns, line);
-      };
-      result.unshift(columns);
-      return result;
-    } else {
-      return [];
-    }
+    columns = [];
+    result = json.map = function(line) {
+      return toArray(columns, line);
+    };
+    result.unshift(columns);
+    return result;
   };
 
   toArray = function(columns, x) {
@@ -88,7 +84,7 @@
 
   window.onload = function() {
     var url, xhr;
-    url = location.hash;
+    url = location.hash.slice(1);
     xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
     xhr.onload = function() {

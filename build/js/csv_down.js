@@ -87,15 +87,16 @@
   object = toString({});
 
   window.onload = function() {
-    var xhr;
+    var url, xhr;
+    url = location.hash;
     xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://localhost/rest/v1/search_base_user?base=10&q=', true);
+    xhr.open('GET', url, true);
     xhr.onload = function() {
       var ary, json;
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
           json = JSON.parse(xhr.responseText);
-          ary = jsonToArray();
+          ary = jsonToArray(json);
           return createCSVURL(ary, 'main');
         }
       }

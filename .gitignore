@@ -16,7 +16,10 @@ results
 
 npm-debug.log
 node_modules
-build
+
+### JS ###
+build/js/*.map
+build/js/*.coffee
 
 ### emacs ###
 *~

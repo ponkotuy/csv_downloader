@@ -1,11 +1,12 @@
 window.onload = ->
+  url = location.hash
   xhr = new XMLHttpRequest()
-  xhr.open('GET', 'http://localhost/rest/v1/search_base_user?base=10&q=', true)
+  xhr.open('GET', url, true)
   xhr.onload = ->
     if xhr.readyState == 4
       if xhr.status == 200
         json = JSON.parse(xhr.responseText)
-        ary = jsonToArray()
+        ary = jsonToArray(json)
         createCSVURL(ary, 'main')
   xhr.onerror = -> console.error(xhr.statusText)
   xhr.send(null)

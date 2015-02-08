@@ -1,5 +1,5 @@
 (function() {
-  var LF, bom, createCSVURL, exec, isObject, object, toArray, toElems, toString;
+  var LF, bom, contains, createCSVURL, exec, isObject, object, toArray, toElems, toString;
 
   LF = '\r\n';
 
@@ -9,7 +9,7 @@
       var line;
       line = xs.map(function(x) {
         var quote;
-        quote = x.contains('"') || x.contains(',') || x.contains('\r') || x.contains('\n');
+        quote = contains(x, '"') || contains(x, ',') || contains(x, '\r') || contains(x, '\n');
         x = x.replace('"', '""');
         if (quote) {
           return '"' + x + '"';
@@ -20,6 +20,10 @@
       return line.join(',');
     });
     return entire.join(LF) + LF;
+  };
+
+  contains = function(str, elem) {
+    return str.indexOf(elem) !== -1;
   };
 
   this.jsonToArray = function(json) {

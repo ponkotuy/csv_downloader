@@ -14,11 +14,10 @@ window.onload = ->
 
 createCSVURL = (ary, id) ->
   csv = toCSV(ary)
-  blob = new Blob([csv], {type: 'text/csv'})
+  blob = new Blob([bom, csv], {type: 'text/csv'})
   url = (window.URL or window.webkitURL).createObjectURL(blob)
-  console.log(url)
   a = document.getElementById(id)
   a.download = 'file.csv'
   a.href = url
 
-createCORSRequest = (method, url) ->
+bom = new Uint8Array([0xEF, 0xBB, 0xBF])

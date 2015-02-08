@@ -16,7 +16,6 @@ toArray = (columns, x) ->
         columns.push(k)
         idx = columns.length - 1
       result[idx] = v
-  console.log(result)
   result
 
 toElems = (x) ->

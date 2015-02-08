@@ -1,5 +1,5 @@
 (function() {
-  var LF, createCORSRequest, createCSVURL, isObject, object, toArray, toElems, toString;
+  var LF, bom, createCSVURL, isObject, object, toArray, toElems, toString;
 
   LF = '\r\n';
 
@@ -47,7 +47,6 @@
         result[idx] = v;
       }
     }
-    console.log(result);
     return result;
   };
 
@@ -104,17 +103,16 @@
   createCSVURL = function(ary, id) {
     var a, blob, csv, url;
     csv = toCSV(ary);
-    blob = new Blob([csv], {
+    blob = new Blob([bom, csv], {
       type: 'text/csv'
     });
     url = (window.URL || window.webkitURL).createObjectURL(blob);
-    console.log(url);
     a = document.getElementById(id);
     a.download = 'file.csv';
     return a.href = url;
   };
 
-  createCORSRequest = function(method, url) {};
+  bom = new Uint8Array([0xEF, 0xBB, 0xBF]);
 
 }).call(this);
 

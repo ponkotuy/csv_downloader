@@ -5,6 +5,9 @@
   "main": "csv_down.js",
   "author": "ponkotuy",
   "license": "MIT",
+  "dependencies": {
+    "text-encoding": "0.5.2"
+  },
   "devDependencies": {
     "grunt": "*",
     "grunt-contrib-watch": "*",

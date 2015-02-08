@@ -2,7 +2,7 @@
 # Required Array
 @jsonToArray = (json) ->
   columns = []
-  result = json.map = (line) ->
+  result = json.map (line) ->
     toArray(columns, line)
   result.unshift(columns)
   result
@@ -14,8 +14,9 @@ toArray = (columns, x) ->
       idx = columns.indexOf(k)
       if idx == -1
         columns.push(k)
-        idx = columns.length -1
+        idx = columns.length - 1
       result[idx] = v
+  console.log(result)
   result
 
 toElems = (x) ->
@@ -26,8 +27,9 @@ toElems = (x) ->
       for k, v of obj
         result["#{xk}_#{k}"] = v
     else
-      result[xk] = xv.toString
+      result[xk] = xv.toString()
+  result
 
 isObject = (x) -> toString.call(x) == object
 toString = Object.prototype.toString
-object = toString({})
+object = toString.call({})

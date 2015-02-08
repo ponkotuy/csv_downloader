@@ -25,9 +25,9 @@
   this.jsonToArray = function(json) {
     var columns, result;
     columns = [];
-    result = json.map = function(line) {
+    result = json.map(function(line) {
       return toArray(columns, line);
-    };
+    });
     result.unshift(columns);
     return result;
   };
@@ -42,36 +42,31 @@
         idx = columns.indexOf(k);
         if (idx === -1) {
           columns.push(k);
-          idx = columns.length(-1);
+          idx = columns.length - 1;
         }
         result[idx] = v;
       }
     }
+    console.log(result);
     return result;
   };
 
   toElems = function(x) {
-    var k, obj, result, v, xk, xv, _results;
+    var k, obj, result, v, xk, xv;
     result = {};
-    _results = [];
     for (xk in x) {
       xv = x[xk];
       if (isObject(xv)) {
         obj = toElems(xv);
-        _results.push((function() {
-          var _results1;
-          _results1 = [];
-          for (k in obj) {
-            v = obj[k];
-            _results1.push(result["" + xk + "_" + k] = v);
-          }
-          return _results1;
-        })());
+        for (k in obj) {
+          v = obj[k];
+          result["" + xk + "_" + k] = v;
+        }
       } else {
-        _results.push(result[xk] = xv.toString);
+        result[xk] = xv.toString();
       }
     }
-    return _results;
+    return result;
   };
 
   isObject = function(x) {
@@ -80,11 +75,14 @@
 
   toString = Object.prototype.toString;
 
-  object = toString({});
+  object = toString.call({});
 
   window.onload = function() {
     var url, xhr;
     url = location.hash.slice(1);
+    if (!url) {
+      return;
+    }
     xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
     xhr.onload = function() {

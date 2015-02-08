@@ -1,5 +1,6 @@
 window.onload = ->
   url = location.hash.slice(1)
+  if !url then return
   xhr = new XMLHttpRequest()
   xhr.open('GET', url, true)
   xhr.onload = ->

@@ -109,7 +109,9 @@
     url = (window.URL || window.webkitURL).createObjectURL(blob);
     a = document.getElementById(id);
     a.download = 'file.csv';
-    return a.href = url;
+    a.href = url;
+    a.removeAttribute("disabled");
+    return location.href = url;
   };
 
   bom = new Uint8Array([0xEF, 0xBB, 0xBF]);

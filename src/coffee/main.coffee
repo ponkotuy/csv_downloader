@@ -19,5 +19,7 @@ createCSVURL = (ary, id) ->
   a = document.getElementById(id)
   a.download = 'file.csv'
   a.href = url
+  a.removeAttribute("disabled")
+  location.href = url
 
 bom = new Uint8Array([0xEF, 0xBB, 0xBF])

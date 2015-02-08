@@ -4,9 +4,27 @@
   <head>
     <meta charset="UTF-8" />
     <title>CSV Downloader</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css" />
     <script src="build/js/csv_down.js"></script>
   </head>
   <body>
-    <a id="main" href="dummy">Download</a></p>
+    <h1>CSV Downloader</h1>
+    <h3>なにこれ</h3>
+    <p>JSON APIを叩くURLを指定するとCSV（RFC非準拠のExcelで読めそうな形式）に変換してダウンロードできます。</p>
+    <h3>使い方</h3>
+    <p><a href="http://ponkotuy.github.io/csv_downloader/index.html">http://ponkotuy.github.io/csv_downloader/index.html</a>の後ろに#を付けて、JSONのURLを追加するだけです。</p>
+    <h3>サンプル</h3>
+    <p><a href="http://ponkotuy.github.io/csv_downloader/index.html#http://myfleet.moe/rest/v1/activities">http://ponkotuy.github.io/csv_downloader/index.html#http://myfleet.moe/rest/v1/activities</a></p>
+    <h3>読めないんだけど？</h3>
+    <p>いくらか制限があります</p>
+    <ul>
+      <li>UTF8のみ対応です。Excelで読めるようにBOMを付与します。</li>
+      <li>現行GET methodのみです。対応は難しくないと思うので、リクエストがあれば作ります</li>
+      <li>JavaScriptサイドで処理をするので、CORS対応が必要です。詳細はググってください。</li>
+      <li>JSONの返り値がArrayの中にObjectである必要があります。つまり[{}, {}]みたいな。</li>
+    </ul>
+    <p>ぶっちゃけ<a href="http://myfleet.moe">MyFleetGirls</a>でしか使えないと思います。</p>
+    <h3>Download</h3>
+    <a target="_blank" id="main" href="dummy" disabled="disabled" class="pure-button pure-button-primary">Download</a></p>
   </body>
 </html>

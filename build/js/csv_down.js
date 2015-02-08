@@ -1,5 +1,5 @@
 (function() {
-  var LF, bom, createCSVURL, isObject, object, toArray, toElems, toString;
+  var LF, bom, createCSVURL, exec, isObject, object, toArray, toElems, toString;
 
   LF = '\r\n';
 
@@ -77,9 +77,16 @@
   object = toString.call({});
 
   window.onload = function() {
+    exec();
+    return window.onhashchange = function() {
+      return exec();
+    };
+  };
+
+  exec = function() {
     var url, xhr;
     url = location.hash.slice(1);
-    if (!url) {
+    if (url.length === 0) {
       return;
     }
     xhr = new XMLHttpRequest();

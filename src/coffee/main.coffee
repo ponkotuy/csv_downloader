@@ -1,6 +1,11 @@
 window.onload = ->
+  exec()
+  window.onhashchange = ->
+    exec()
+
+exec = ->
   url = location.hash.slice(1)
-  if !url then return
+  if url.length == 0 then return
   xhr = new XMLHttpRequest()
   xhr.open('GET', url, true)
   xhr.onload = ->
